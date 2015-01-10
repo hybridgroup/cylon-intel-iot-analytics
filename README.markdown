@@ -8,6 +8,8 @@ This repository contains the Cylon adaptor for IntelIotAnalytics.
 For more information about Cylon, check out the repo at
 https://github.com/hybridgroup/cylon
 
+[![Build Status](https://secure.travis-ci.org/hybridgroup/cylon-intel-iot-analytics.png?branch=master)](http://travis-ci.org/hybridgroup/cylon-intel-iot-analytics) [![Code Climate](https://codeclimate.com/github/hybridgroup/cylon-intel-iot-analytics/badges/gpa.svg)](https://codeclimate.com/github/hybridgroup/cylon-intel-iot-analytics) [![Test Coverage](https://codeclimate.com/github/hybridgroup/cylon-intel-iot-analytics/badges/coverage.svg)](https://codeclimate.com/github/hybridgroup/cylon-intel-iot-analytics)
+
 ## Getting Started
 
 Install the module with: `npm install cylon-intel-iot-analytics`
