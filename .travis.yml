@@ -1,0 +1,9 @@
+language: node_js
+node_js: '0.10'
+install:
+  - npm install
+  - npm install git://github.com/hybridgroup/cylon.git
+  - npm install -g istanbul codeclimate-test-reporter
+script:
+  - make cover
+  - CODECLIMATE_REPO_TOKEN=3b709cfa24296b831e9bec667aa55eea85cbeb4f21ba08f795483aa3a846ee8e codeclimate < coverage/lcov.info

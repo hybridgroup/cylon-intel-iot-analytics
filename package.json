@@ -1,0 +1,32 @@
+{
+  "name": "cylon-intel-iot-analytics",
+  "version": "0.1.0",
+  "main": "lib/cylon-intel-iot-analytics.js",
+  "description": "Cylon module for Intel IoT Analytics",
+  "homepage": "http://cylonjs.com",
+  "bugs": "https://github.com/hybridgroup/cylon-intel-iot-analytics/issues",
+  "author": "The Hybrid Group <cylonjs@hybridgroup.com>",
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hybridgroup/cylon-intel-iot-analytics"
+  },
+
+  "license": "Apache 2.0",
+
+  "devDependencies": {
+    "sinon-chai": "2.6.0",
+    "chai":       "1.9.2",
+    "mocha":      "1.21.5",
+    "sinon":      "1.10.3"
+  },
+
+  "peerDependencies": {
+    "cylon": ">=0.21.1 < 1"
+  },
+
+  "dependencies": {
+    "cylon": "~0.21.1",
+    "restler": ">= 3.2.2"
+  }
+}
