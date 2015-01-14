@@ -65,7 +65,7 @@ accounts section in the developer portal.
 
 <img src="http://i.imgur.com/HGsqYwr.png" alt="Get accountId" width="100%">
 
-Once you have the `accountId` you can add new devices to your account using Cylon as follows.
+Once you have the `accountId` you can create new devices for that account using Cylon as follows.
 
 ```javascript
 "use strict";
@@ -124,7 +124,7 @@ or submit any data to the device in case you have already added components to it
 
 So in order to activate a device you'll need an `activationCode`, we can get this from the accounts
 screen (check previous screenshoots), or you can get it using Cylon, in the following example we get the
-activation code and activate a device in the same little program.
+activation code and activate a device in the same program.
 
 ```javascript
 "use strict";
@@ -192,29 +192,34 @@ Cylon.robot({
   },
 
   work: function(my) {
-    var aId = "f5dbea6a-7115-4f77-9919-63c23ec83d9b";
-    var component = {
+    var com = {
       "cid": "raspi-01-temperature.v1.0-01",
       "name": "temp",
       "type": "temperature.v1.0"
     };
 
-    console.log("Connecting to IoT analytics:");
+    var deviceToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJ-b7A....",
+        aId = "f5dbea6a-7115-4f77-9919-63c23ec83d9b";
 
-    my.iot.addComponent(aId, "raspi-01", component, function(err, res) {
+    var callback =  function(err, res) {
       console.log("error:", err);
       console.log("Component:", res);
-    });
+    };
+
+    console.log("Connecting to IoT analytics:");
+
+    my.iot.addComponent(aId, "raspi-01", com, deviceToken, callback);
   }
 
 }).start();
 ```
 
 Once that's done, we are ready to start submitting data to the device, remember this two
-steps, `addComponent` and `submitData`, require the deviceToken which is different than
-the user authorizationToken generated each time you connect to Intel's IoT Analytics network.
+steps, `addComponent` and `submitData`, require the `deviceToken` which is different than
+the user `authorizationToken` that is used for all other Intel IoT Analytics API calls
+and generated each time you connect to Intel's IoT Analytics network.
 
-This is how you dubmit data to a device:
+This is how you submit data to a device:
 
 ```javascript
 "use strict";
@@ -330,7 +335,7 @@ Cylon.robot({
 That's it, with that you should be able to create devices and components, add components to a device,
 and submit/retrieve data from a device component.
 
-Now you're ready to hook up Cylon to the Intel IoT Analytics network!
+Now you're ready to hook up Cylon.JS to the Intel IoT Analytics network!
 
 [Intel IoT Anlytics]: https://dashboard.us.enableiot.com
 
