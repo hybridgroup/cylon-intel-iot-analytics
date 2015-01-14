@@ -34,7 +34,7 @@ Cylon.robot({
     console.log("Connecting to IoT analytics:");
     my.iot.createDevice(aId, device, function(err, res) {
       console.log("error:", err);
-      console.log("Devices:", res);
+      console.log("New Device:", res);
     });
   }
 
