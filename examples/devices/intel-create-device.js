@@ -17,6 +17,7 @@ Cylon.robot({
   },
 
   work: function(my) {
+    var aId = "f5dbea6a-7115-4f77-9919-63c23ec83d9b";
     var device = {
       "deviceId": "raspi-01",
       "gatewayId": "24-a5-80-21-5b-29",
@@ -30,9 +31,8 @@ Cylon.robot({
       }
     };
 
-
     console.log("Connecting to IoT analytics:");
-    my.iot.createDevice("f5dbea6a-7115-4f77-9919-63c23ec83d9b", device, function(err, res) {
+    my.iot.createDevice(aId, device, function(err, res) {
       console.log("error:", err);
       console.log("Devices:", res);
     });

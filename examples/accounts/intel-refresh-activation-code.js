@@ -17,8 +17,9 @@ Cylon.robot({
   },
 
   work: function(my) {
+    var accountId = "f5dbea6a-7115-4f77-9919-63c23ec83d9b";
     console.log("Connecting to IoT analytics:");
-    my.iot.refreshActivationCode("f5dbea6a-7115-4f77-9919-63c23ec83d9b", function(err, data) {
+    my.iot.refreshActivationCode(accountId, function(err, data) {
       console.log("error:", err);
       console.log("Activation Code:", data);
     });

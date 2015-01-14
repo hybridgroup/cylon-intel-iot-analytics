@@ -17,8 +17,9 @@ Cylon.robot({
   },
 
   work: function(my) {
+    var aId = "f5dbea6a-7115-4f77-9919-63c23ec83d9b";
     console.log("Connecting to IoT analytics:");
-    my.iot.device("f5dbea6a-7115-4f77-9919-63c23ec83d9b", "arduino-uno-id1", function(err, device) {
+    my.iot.device(aId, "arduino-uno-id1", function(err, device) {
       console.log("error:", err);
       console.log("Device details:", device);
     });

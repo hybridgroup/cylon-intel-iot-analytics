@@ -17,8 +17,9 @@ Cylon.robot({
   },
 
   work: function(my) {
+    var accountId = "f5dbea6a-7115-4f77-9919-63c23ec83d9b";
     console.log("Connecting to IoT analytics:");
-    my.iot.getAllAttrs("f5dbea6a-7115-4f77-9919-63c23ec83d9b", function(err, devices) {
+    my.iot.getAllAttrs(accountId, function(err, devices) {
       console.log("error:", err);
       console.log("Account attributes:", devices);
     });

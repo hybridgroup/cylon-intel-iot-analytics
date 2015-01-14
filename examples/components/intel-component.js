@@ -1,3 +1,5 @@
+"use strict";
+
 var Cylon = require("cylon");
 
 Cylon.robot({
@@ -15,8 +17,9 @@ Cylon.robot({
   },
 
   work: function(my) {
+    var aId = "f5dbea6a-7115-4f77-9919-63c23ec83d9b";
     console.log("Connecting to IoT analytics:");
-    my.iot.component("f5dbea6a-7115-4f77-9919-63c23ec83d9b", "dist.v1.0", function(err, devices) {
+    my.iot.component(aId, "dist.v1.0", function(err, devices) {
       console.log("error:", err);
       console.log("Account component details:", devices);
     });
