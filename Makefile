@@ -28,4 +28,3 @@ release: lint test
 	@git tag -m "$(VERSION)" v$(VERSION)
 	@git push --tags
 	@npm publish ./
-	

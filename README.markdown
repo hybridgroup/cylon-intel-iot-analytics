@@ -361,6 +361,8 @@ Thank you!
 
 ## Release History
 
+0.1.1 - Fix lint and test errors.
+
 0.1.0 - Initial release
 
 ## License
