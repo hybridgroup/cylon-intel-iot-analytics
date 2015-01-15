@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var IntelIotAnalytics = source("driver");
 
@@ -7,5 +7,7 @@ describe("Cylon.Drivers.IntelIotAnalytics", function() {
     connection: {}
   });
 
-  it("needs tests");
+  it("needs tests", function() {
+    console.log(driver);
+  });
 });
