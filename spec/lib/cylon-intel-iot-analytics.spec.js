@@ -8,13 +8,13 @@ var Adaptor = source('adaptor'),
 describe("Cylon.IntelIotAnalytics", function() {
   describe("#adaptors", function() {
     it('is an array of supplied adaptors', function() {
-      expect(module.adaptors).to.be.eql([]);
+      expect(module.adaptors).to.be.eql(["intel-iot-analytics"]);
     });
   });
 
   describe("#drivers", function() {
     it('is an array of supplied drivers', function() {
-      expect(module.drivers).to.be.eql([]);
+      expect(module.drivers).to.be.eql(["iot"]);
     });
   });
 
@@ -26,13 +26,13 @@ describe("Cylon.IntelIotAnalytics", function() {
 
   describe("#driver", function() {
     it("returns an instance of the Driver", function() {
-      expect(module.driver()).to.be.instanceOf(Driver);
+      expect(module.driver({ driver: 'iot' })).to.be.instanceOf(Driver);
     });
   });
 
   describe("#adaptor", function() {
     it("returns an instance of the Adaptor", function() {
-      expect(module.adaptor()).to.be.instanceOf(Adaptor);
+      expect(module.adaptor({ username: '', password: ''})).to.be.instanceOf(Adaptor);
     });
   });
 });
