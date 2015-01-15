@@ -2,7 +2,7 @@
 
 Cylon.js (http://cylonjs.com) is a JavaScript framework for robotics, physical computing, and the Internet of Things using Node.js
 
-This repository contains the Cylon adaptor for [Intel's Iot Analytics platform](https://dashboard.us.enableiot.com).
+This repository contains the Cylon adaptor for [Intel's Iot Analytics platform](http://enableiot.com).
 
 For more information about Cylon, check out the repo at
 https://github.com/hybridgroup/cylon
@@ -57,8 +57,8 @@ Cylon.robot({
 
 ## How to Connect
 
-On the [Intel IoT Analytics site](https://dashboard.us.enableiot.com), sign up for an account, or log into your existing account.
-After doing so, you can create a new Device using the developer portal or using Cylon.JS.
+On the [Intel IoT Analytics site](http://enableiot.com), sign up for an account, or log into your existing account.
+After doing so, you can create a new Device using the developer portal or using Cylon.js.
 
 If you do it using Cylon, you'll need the `accountId` and your username and password. You can get the account id from the
 accounts section in the developer portal.
@@ -111,20 +111,20 @@ Cylon.robot({
 }).start();
 ```
 
-The name of the device and details don't matter that much, but they should be meaningful,
-you can also add devices using the Intel IoT Developer portal.
+The name of the device and details don't matter that much, but they should be meaningful.
+You can also add devices using the Intel IoT Developer portal.
 
 <img src="http://i.imgur.com/x4Jjgio.png" alt="Create New Device" width="100%">
 
-After a device is created we need to activate it in order to use it, this is a very crucial moment,
-since after activation it is the ONLY time you can get the `deviceToken`, if you lose it you WILL NOT
-be able to retrieve it or see it later ever again, either with code using the API or within the dev portal,
-by consequence you will not be able to add components (needed to store data in a device),
-or submit any data to the device in case you have already added components to it.
+After a device is created we need to activate it in order to use it. This is a very crucial moment,
+since after activation it is the ONLY time you can get the `deviceToken`. If you lose it, you WILL NOT
+be able to retrieve it or see it later ever again. This includes both with code using the API or within the dev portal itself.
+By consequence, you will not be able to add components (needed to store data in a device),
+or submit any data to the device, once you have already added components to it.
 
-So in order to activate a device you'll need an `activationCode`, we can get this from the accounts
-screen (check previous screenshoots), or you can get it using Cylon, in the following example we get the
-activation code and activate a device in the same program.
+In order to activate a device you'll need an `activationCode`. We can get this from the accounts
+screen (check previous screenshoots), or you can get it using Cylon.js itself. In the following example we get the
+activation code and activate a device in the same program:
 
 ```javascript
 "use strict";
@@ -164,13 +164,13 @@ Cylon.robot({
 
 }).start();
 ```
-Make sure to review and store the returned `deviceToken` since as previously mentioned we'll
+Make sure to review and store the returned `deviceToken` since as previously mentioned, we will
 need it to add components and submit data.
 
-Now that we have the device's `deviceToken` and the device has been activated we need to add a component
-to it. This component will act as our data repository for that device in that account, we'll do it with
-one of the default components already created and provided in the developer portal, but you can create and
-customize your own from the portal or using Cylon. Let's check the code.
+Now that we have the device's `deviceToken` and the device has been activated, we need to add a component
+to it. This component will act as our data repository for that device in that account. In this example, we will do it with one of the default components already created and provided in the developer portal. However, you can create and customize your own from the portal or using Cylon. 
+
+Let's check the code:
 
 ```javascript
 "use strict";
@@ -214,10 +214,10 @@ Cylon.robot({
 }).start();
 ```
 
-Once that's done, we are ready to start submitting data to the device, remember this two
-steps, `addComponent` and `submitData`, require the `deviceToken` which is different than
-the user `authorizationToken` that is used for all other Intel IoT Analytics API calls
-and generated each time you connect to Intel's IoT Analytics network.
+Once that's done, we are ready to start submitting data to the device. Remember there are two
+steps `addComponent` and `submitData`, that require the `deviceToken` which is different than
+the user `authorizationToken` that is used for all other Intel IoT Analytics API calls. The `deviceToken` is nly ever creating once for a device, and the `authorizationToken`
+is generated each time you connect to Intel's IoT Analytics network.
 
 This is how you submit data to a device:
 
@@ -281,7 +281,7 @@ Cylon.robot({
 }).start();
 ```
 
-In the same way you can retrieve data from a device component.
+In the same way, you can retrieve data from a device component:
 
 ```javascript
 "use strict";
@@ -332,7 +332,7 @@ Cylon.robot({
 }).start();
 ```
 
-That's it, with that you should be able to create devices and components, add components to a device,
+That's it! With that, you should be able to create devices and components, add components to a device,
 and submit/retrieve data from a device component.
 
 Now you're ready to hook up Cylon.JS to the Intel IoT Analytics network!
@@ -361,7 +361,7 @@ Thank you!
 
 ## Release History
 
-None yet...
+0.1.0 - Initial release
 
 ## License
 
