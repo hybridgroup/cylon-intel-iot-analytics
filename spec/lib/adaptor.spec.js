@@ -2,6 +2,7 @@
 "use strict";
 
 var IntelIotAnalytics = source("adaptor");
+var rest = require("restler");
 
 describe("Cylon.Adaptors.IntelIotAnalytics", function() {
   var adaptor;
@@ -204,4 +205,94 @@ describe("Cylon.Adaptors.IntelIotAnalytics", function() {
       });
     });
   });
+
+  describe("#_rest", function() {
+    var callback, restObj, options, path;
+
+    beforeEach(function() {
+      path = adaptor.baseUrl + "/accounts";
+      options= {
+        headers: {
+          "content-type": "application/json"
+        },
+        accessToken: adaptor.token,
+        query: {},
+        data: {}
+      };
+
+      restObj = { on: stub() };
+      restObj.on.yields();
+
+      callback = spy;
+
+      stub(adaptor, "_defCb").returns(callback);
+
+      spy(adaptor, "_restOptions");
+
+      stub(rest, "post").returns(restObj);
+      stub(rest, "get").returns(restObj);
+      stub(rest, "del").returns(restObj);
+      stub(rest, "put").returns(restObj);
+      stub(rest, "postJson").returns(restObj);
+      stub(rest, "putJson").returns(restObj);
+    });
+
+    afterEach(function() {
+      adaptor._restOptions.reset();
+      adaptor._defCb.reset();
+      rest.post.restore();
+      rest.get.restore();
+      rest.put.restore();
+      rest.del.restore();
+      rest.postJson.restore();
+      rest.putJson.restore();
+    });
+
+    it("calls rest#get", function() {
+      adaptor._rest("get", "/accounts", {}, {}, callback);
+      expect(rest.get).to.be.calledWith(path, options);
+      expect(restObj.on).to.be.calledWith("complete", callback);
+    });
+
+    it("calls rest#post", function() {
+      adaptor._rest("post", "/accounts", {}, {}, callback);
+      expect(rest.post).to.be.calledWith(path, options);
+    });
+
+    it("calls rest#postJson", function() {
+      adaptor._rest("postJson", "/accounts", {}, {}, callback);
+      expect(rest.postJson).to.be.calledWith(path, {}, options);
+    });
+
+    it("calls rest#put", function() {
+      adaptor._rest("put", "/accounts", {}, {}, callback);
+      expect(rest.put).to.be.calledWith(path, options);
+    });
+
+    it("calls rest#putJson", function() {
+      adaptor._rest("putJson", "/accounts", {}, {}, callback);
+      expect(rest.putJson).to.be.calledWith(path, {}, options);
+    });
+
+    it("calls rest#del", function() {
+      adaptor._rest("del", "/accounts", {}, {}, callback);
+      expect(rest.del).to.be.calledWith(path, options);
+    });
+  });
+
+/*
+  describe("#_get", function() {
+      beforeEach(function() {
+        adaptor._get("/accounts");
+      });
+
+      it("calls #_rest with params", function() {
+        expect(adaptor._rest).to.be.calledWith("get");
+      });
+
+      it("calls rest#get", function() {
+        expect(rest.get).to.be.called;
+      });
+    });
+   */
 });
