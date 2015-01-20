@@ -280,19 +280,119 @@ describe("Cylon.Adaptors.IntelIotAnalytics", function() {
     });
   });
 
-/*
   describe("#_get", function() {
-      beforeEach(function() {
-        adaptor._get("/accounts");
-      });
-
-      it("calls #_rest with params", function() {
-        expect(adaptor._rest).to.be.calledWith("get");
-      });
-
-      it("calls rest#get", function() {
-        expect(rest.get).to.be.called;
-      });
+    beforeEach(function() {
+      stub(adaptor, "_rest");
+      adaptor._get("/accounts", { value: 123 });
     });
-   */
+
+    afterEach(function() {
+      adaptor._rest.restore();
+    });
+
+    it("calls #_rest with 'get'", function() {
+      expect(adaptor._rest).to.be.calledWith(
+        "get",
+        "/accounts",
+        null,
+        { value: 123 }
+      );
+    });
+  });
+
+
+  describe("#_post", function() {
+    beforeEach(function() {
+      stub(adaptor, "_rest");
+      adaptor._post("/accounts", { value: 123 });
+    });
+
+    afterEach(function() {
+      adaptor._rest.restore();
+    });
+
+    it("calls #_rest with post", function() {
+      expect(adaptor._rest).to.be.calledWith(
+        "post",
+        "/accounts",
+        { value: 123 }
+      );
+    });
+  });
+
+  describe("#_postJson", function() {
+    beforeEach(function() {
+      stub(adaptor, "_rest");
+      adaptor._postJson("/accounts", { value: 123 });
+    });
+
+    afterEach(function() {
+      adaptor._rest.restore();
+    });
+
+    it("calls #_rest with postJson", function() {
+      expect(adaptor._rest).to.be.calledWith(
+        "postJson",
+        "/accounts",
+        { value: 123 }
+      );
+    });
+  });
+
+  describe("#_put", function() {
+    beforeEach(function() {
+      stub(adaptor, "_rest");
+      adaptor._put("/accounts", { value: 123 });
+    });
+
+    afterEach(function() {
+      adaptor._rest.restore();
+    });
+
+    it("calls #_rest with put", function() {
+      expect(adaptor._rest).to.be.calledWith(
+        "put",
+        "/accounts",
+        { value: 123 }
+      );
+    });
+  });
+
+  describe("#_putJson", function() {
+    beforeEach(function() {
+      stub(adaptor, "_rest");
+      adaptor._putJson("/accounts", { value: 123 });
+    });
+
+    afterEach(function() {
+      adaptor._rest.restore();
+    });
+
+    it("calls #_rest with putJson", function() {
+      expect(adaptor._rest).to.be.calledWith(
+        "putJson",
+        "/accounts",
+        { value: 123 }
+      );
+    });
+  });
+
+  describe("#_del", function() {
+    beforeEach(function() {
+      stub(adaptor, "_rest");
+      adaptor._del("/accounts", { value: 123 });
+    });
+
+    afterEach(function() {
+      adaptor._rest.restore();
+    });
+
+    it("calls #_rest with putJson", function() {
+      expect(adaptor._rest).to.be.calledWith(
+        "del",
+        "/accounts",
+        { value: 123 }
+      );
+    });
+  });
 });
