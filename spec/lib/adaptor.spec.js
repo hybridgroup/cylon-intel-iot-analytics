@@ -395,4 +395,484 @@ describe("Cylon.Adaptors.IntelIotAnalytics", function() {
       );
     });
   });
+
+  describe("#_getToken", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      stub(adaptor, "_post");
+      adaptor._getToken(callback);
+    });
+
+    afterEach(function() {
+      adaptor._post.restore();
+    });
+
+    it("calls #_post with params", function() {
+      expect(adaptor._post).to.be.calledWith(
+        "/auth/token",
+        {
+          username: "user1",
+          password: "passwd"
+        }
+      );
+    });
+  });
+
+  describe("#accountInfo", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      stub(adaptor, "_get");
+      adaptor.accountInfo("123456", callback);
+    });
+
+    afterEach(function() {
+      adaptor._get.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._get).to.be.calledWith(
+        "/accounts/123456",
+        null,
+        callback
+      );
+    });
+  });
+
+  describe("#activationCode", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      stub(adaptor, "_get");
+      adaptor.activationCode("123456", callback);
+    });
+
+    afterEach(function() {
+      adaptor._get.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._get).to.be.calledWith(
+        "/accounts/123456/activationcode",
+        null,
+        callback
+      );
+    });
+  });
+
+  describe("#refreshActivationCode", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      stub(adaptor, "_put");
+      adaptor.refreshActivationCode("123456", callback);
+    });
+
+    afterEach(function() {
+      adaptor._put.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._put).to.be.calledWith(
+        "/accounts/123456/activationcode/refresh",
+        null,
+        null,
+        callback
+      );
+    });
+  });
+
+  describe("#devices", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      stub(adaptor, "_get");
+      adaptor.devices("123456", callback);
+    });
+
+    afterEach(function() {
+      adaptor._get.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._get).to.be.calledWith(
+        "/accounts/123456/devices",
+        {},
+        callback
+      );
+    });
+  });
+
+  describe("#device", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      stub(adaptor, "_get");
+      adaptor.device("123456", "abc123", callback);
+    });
+
+    afterEach(function() {
+      adaptor._get.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._get).to.be.calledWith(
+        "/accounts/123456/devices/abc123",
+        null,
+        callback
+      );
+    });
+  });
+
+  describe("#createDevice", function() {
+    var callback, device;
+
+    beforeEach(function() {
+      device = {
+        id: "abc123",
+        desc: "MyDevice"
+      };
+
+      callback = spy();
+      stub(adaptor, "_postJson");
+      adaptor.createDevice("123456", device, callback);
+    });
+
+    afterEach(function() {
+      adaptor._postJson.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._postJson).to.be.calledWith(
+        "/accounts/123456/devices",
+        device,
+        callback
+      );
+    });
+  });
+
+  describe("#updateDevice", function() {
+    var callback, device;
+
+    beforeEach(function() {
+      device = {
+        id: "abc123",
+        desc: "MyDevice"
+      };
+
+      callback = spy();
+      stub(adaptor, "_putJson");
+      adaptor.updateDevice("123456", "abc123", device, callback);
+    });
+
+    afterEach(function() {
+      adaptor._putJson.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._putJson).to.be.calledWith(
+        "/accounts/123456/devices/abc123",
+        device,
+        callback
+      );
+    });
+  });
+
+  describe("#activateDevice", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      stub(adaptor, "_putJson");
+      adaptor.activateDevice("123456", "abc123", "activationcode", callback);
+    });
+
+    afterEach(function() {
+      adaptor._putJson.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._putJson).to.be.calledWith(
+        "/accounts/123456/devices/abc123/activation",
+        { activationCode: "activationcode"},
+        callback
+      );
+    });
+  });
+
+  describe("#deleteDevice", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      stub(adaptor, "_del");
+      adaptor.deleteDevice("123456", "abc123", callback);
+    });
+
+    afterEach(function() {
+      adaptor._del.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._del).to.be.calledWith(
+        "/accounts/123456/devices/abc123",
+        null,
+        null,
+        callback
+      );
+    });
+  });
+
+  describe("#addComponent", function() {
+    var callback, component;
+
+    beforeEach(function() {
+      component = {
+        id: "abc123",
+        desc: "MyDevice"
+      };
+
+      callback = spy();
+      stub(adaptor, "_postJson");
+      adaptor.addComponent("123456", "abc123", "qwerty", component, callback);
+    });
+
+    afterEach(function() {
+      adaptor._postJson.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._postJson).to.be.calledWith(
+        "/accounts/123456/devices/abc123/components",
+        component,
+        callback
+      );
+    });
+  });
+
+  describe("#removeComponent", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      stub(adaptor, "_del");
+      adaptor.removeComponent("123456", "abc123", "qwerty", callback);
+    });
+
+    afterEach(function() {
+      adaptor._del.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._del).to.be.calledWith(
+        "/accounts/123456/devices/abc123/components/qwerty",
+        null,
+        null,
+        callback
+      );
+    });
+  });
+
+  describe("#getAllTags", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      stub(adaptor, "_get");
+      adaptor.getAllTags("123456", callback);
+    });
+
+    afterEach(function() {
+      adaptor._get.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._get).to.be.calledWith(
+        "/accounts/123456/devices/tags",
+        null,
+        callback
+      );
+    });
+  });
+
+  describe("#getAllAttrs", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      stub(adaptor, "_get");
+      adaptor.getAllAttrs("123456", callback);
+    });
+
+    afterEach(function() {
+      adaptor._get.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._get).to.be.calledWith(
+        "/accounts/123456/devices/attributes",
+        null,
+        callback
+      );
+    });
+  });
+
+  describe("#getAllComponents", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      stub(adaptor, "_get");
+      adaptor.getAllComponents("123456", callback);
+    });
+
+    afterEach(function() {
+      adaptor._get.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._get).to.be.calledWith(
+        "/accounts/123456/cmpcatalog",
+        { full: true },
+        callback
+      );
+    });
+  });
+
+  describe("#component", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      stub(adaptor, "_get");
+      adaptor.component("123456", "abcdef", callback);
+    });
+
+    afterEach(function() {
+      adaptor._get.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._get).to.be.calledWith(
+        "/accounts/123456/cmpcatalog/abcdef",
+        { full: true },
+        callback
+      );
+    });
+  });
+
+  describe("#createComponent", function() {
+    var callback, component;
+
+    beforeEach(function() {
+      component = {
+        id: "comid123",
+        unit: "celsius"
+      },
+      callback = spy();
+      stub(adaptor, "_postJson");
+      adaptor.createComponent("123456", component, callback);
+    });
+
+    afterEach(function() {
+      adaptor._postJson.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._postJson).to.be.calledWith(
+        "/accounts/123456/cmpcatalog",
+        component,
+        callback
+      );
+    });
+  });
+
+  describe("#updateComponent", function() {
+    var callback, component;
+
+    beforeEach(function() {
+      component = {
+        id: "comid123",
+        unit: "celsius"
+      },
+      callback = spy();
+      stub(adaptor, "_putJson");
+      adaptor.updateComponent("123456", "comid123", component, callback);
+    });
+
+    afterEach(function() {
+      adaptor._putJson.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._putJson).to.be.calledWith(
+        "/accounts/123456/cmpcatalog/comid123",
+        component,
+        callback
+      );
+    });
+  });
+
+  describe("#submitData", function() {
+    var callback, data;
+
+    beforeEach(function() {
+      data = [{
+        cid: "cid123",
+        value: "10"
+      }];
+
+      callback = spy();
+      stub(Date, "now").returns(123456789);
+      stub(adaptor, "_postJson");
+
+      adaptor.submitData("aid123", "did123", "dtoken", data, callback);
+    });
+
+    afterEach(function() {
+      adaptor._postJson.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._postJson).to.be.calledWith(
+        "/data/did123",
+        {
+          on: 123456789,
+          accountId: "aid123",
+          data: data
+        },
+        callback
+      );
+    });
+  });
+
+  describe("#retrieveData", function() {
+    var callback;
+
+    beforeEach(function() {
+      callback = spy();
+      stub(adaptor, "_postJson");
+      adaptor.retrieveData("aid123", {}, callback);
+    });
+
+    afterEach(function() {
+      adaptor._postJson.restore();
+    });
+
+    it("calls #_get with params", function() {
+      expect(adaptor._postJson).to.be.calledWith(
+        "/accounts/aid123/data/search",
+        {},
+        callback
+      );
+    });
+  });
 });
+
