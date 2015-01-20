@@ -15,23 +15,23 @@ describe("Cylon.Drivers.IntelIotAnalytics", function() {
   describe("#constructor", function() {
     it("sets commands object with the following", function() {
       var commands = [
-        "accountInfo",
-        "activationCode",
-        "refreshActivationCode",
+        "account_info",
+        "activation_code",
+        "refresh_activation_code",
         "devices",
         "device",
-        "createDevice",
-        "activateDevice",
-        "deleteDevice",
-        "addComponent",
-        "removeComponent",
-        "getAllAttrs",
-        "getAllTags",
-        "getAllComponents",
-        "createComponent",
-        "updateComponent",
-        "submitData",
-        "retrieveData",
+        "create_device",
+        "activate_device",
+        "delete_device",
+        "add_component",
+        "remove_component",
+        "get_all_attrs",
+        "get_all_tags",
+        "get_all_components",
+        "create_component",
+        "update_component",
+        "submit_data",
+        "retrieve_data",
       ];
 
       for (var c in commands) {
