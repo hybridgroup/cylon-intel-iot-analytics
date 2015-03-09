@@ -18,7 +18,7 @@ Want to use the Go programming language to power your robots? Check out our sist
 Install the module with:
 
 ```
-  $ npm install cylon-intel-iot-analytics
+  $ npm install cylon cylon-intel-iot-analytics
 ```
 
 ## How to Use
