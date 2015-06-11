@@ -12,7 +12,19 @@
     "url": "https://github.com/hybridgroup/cylon-intel-iot-analytics"
   },
 
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
+
+  "keywords": [
+    "cylon",
+    "cylonjs",
+    "cylons",
+    "robot",
+    "robots",
+    "robotics",
+    "iot",
+    "intel",
+    "analytics"
+  ],
 
   "devDependencies": {
     "sinon-chai": "2.6.0",
