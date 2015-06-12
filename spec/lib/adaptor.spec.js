@@ -1,7 +1,6 @@
-// jshint expr:true
 "use strict";
 
-var IntelIotAnalytics = source("adaptor");
+var IntelIotAnalytics = lib("adaptor");
 var rest = require("restler");
 
 describe("Cylon.Adaptors.IntelIotAnalytics", function() {
@@ -39,7 +38,7 @@ describe("Cylon.Adaptors.IntelIotAnalytics", function() {
       adaptor.emit.restore();
     });
 
-    describe("when API login successfull",function() {
+    describe("when API login successfull", function() {
       beforeEach(function() {
         adaptor._getToken.yields(null, { token: "123456" });
         adaptor.connect(callback);
@@ -54,7 +53,7 @@ describe("Cylon.Adaptors.IntelIotAnalytics", function() {
       });
     });
 
-    describe("when API login NOT successfull",function() {
+    describe("when API login NOT successfull", function() {
       beforeEach(function() {
         adaptor._getToken.yields("LOGIN INCORRECT!", null);
         adaptor.connect(callback);
@@ -100,7 +99,7 @@ describe("Cylon.Adaptors.IntelIotAnalytics", function() {
       });
 
       it("returns a default function for REST calls", function() {
-        expect(typeof(defCb)).to.be.eql("function");
+        expect(typeof defCb).to.be.eql("function");
       });
 
       describe("result is instance of Error", function() {
@@ -211,7 +210,7 @@ describe("Cylon.Adaptors.IntelIotAnalytics", function() {
 
     beforeEach(function() {
       path = adaptor.baseUrl + "/accounts";
-      options= {
+      options = {
         headers: {
           "content-type": "application/json"
         },
@@ -775,7 +774,7 @@ describe("Cylon.Adaptors.IntelIotAnalytics", function() {
       component = {
         id: "comid123",
         unit: "celsius"
-      },
+      };
       callback = spy();
       stub(adaptor, "_postJson");
       adaptor.createComponent("123456", component, callback);
@@ -801,7 +800,7 @@ describe("Cylon.Adaptors.IntelIotAnalytics", function() {
       component = {
         id: "comid123",
         unit: "celsius"
-      },
+      };
       callback = spy();
       stub(adaptor, "_putJson");
       adaptor.updateComponent("123456", "comid123", component, callback);

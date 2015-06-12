@@ -1,9 +1,9 @@
 "use strict";
 
-var mod = source("cylon-intel-iot-analytics");
+var mod = lib("cylon-intel-iot-analytics");
 
-var Adaptor = source("adaptor"),
-    Driver = source("driver");
+var Adaptor = lib("adaptor"),
+    Driver = lib("driver");
 
 describe("Cylon.IntelIotAnalytics", function() {
   describe("#adaptors", function() {

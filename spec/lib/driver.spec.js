@@ -1,7 +1,6 @@
-// jshint expr:true
 "use strict";
 
-var IntelIotAnalytics = source("driver");
+var IntelIotAnalytics = lib("driver");
 
 describe("Cylon.Drivers.IntelIotAnalytics", function() {
   var driver;

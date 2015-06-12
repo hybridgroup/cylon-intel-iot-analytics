@@ -18,9 +18,9 @@ Cylon.robot({
 
   work: function(my) {
     var com = {
-    "cid": "arduino-uno-id1-altitute.v1.0",
-    "name": "altitude 01",
-    "type": "altitude.v1.1"
+      cid: "arduino-uno-id1-altitute.v1.0",
+      name: "altitude 01",
+      type: "altitude.v1.1"
     };
 
     // This is the device authorization token generated when

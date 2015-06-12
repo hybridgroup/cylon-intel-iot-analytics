@@ -19,24 +19,24 @@ Cylon.robot({
   work: function(my) {
     var data = [
       {
-        "componentId": "arduino-uno-id1-dist.v1.0",
-        "on": Date.now() - 120,
-        "loc": [ 45.5434085, -122.654422, 124.3 ],
-        "value": "10.7"
+        componentId: "arduino-uno-id1-dist.v1.0",
+        on: Date.now() - 120,
+        loc: [ 45.5434085, -122.654422, 124.3 ],
+        value: "10.7"
       },
       {
-        "componentId": "arduino-uno-id1-dist.v1.0",
-        "on": Date.now() - 60,
-        "loc": [ 45.5434085, -122.654422 ],
-        "value": "26.8"
+        componentId: "arduino-uno-id1-dist.v1.0",
+        on: Date.now() - 60,
+        loc: [ 45.5434085, -122.654422 ],
+        value: "26.8"
       },
       {
-        "componentId": "arduino-uno-id1-dist.v1.0",
-        "on": Date.now(),
-        "value": "35",
-        "attributes": {
-          "accuracy": "±2%RH",
-          "reading": "digital"
+        componentId: "arduino-uno-id1-dist.v1.0",
+        on: Date.now(),
+        value: "35",
+        attributes: {
+          accuracy: "±2%RH",
+          reading: "digital"
         }
       }
     ];
