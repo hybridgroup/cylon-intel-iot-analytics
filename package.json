@@ -1,7 +1,6 @@
 {
   "name": "cylon-intel-iot-analytics",
   "version": "0.2.0",
-  "main": "lib/cylon-intel-iot-analytics.js",
   "description": "Cylon module for Intel IoT Analytics",
   "homepage": "http://cylonjs.com",
   "bugs": "https://github.com/hybridgroup/cylon-intel-iot-analytics/issues",
