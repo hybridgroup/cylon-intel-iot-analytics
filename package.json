@@ -1,6 +1,6 @@
 {
   "name": "cylon-intel-iot-analytics",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Cylon module for Intel IoT Analytics",
   "homepage": "http://cylonjs.com",
   "bugs": "https://github.com/hybridgroup/cylon-intel-iot-analytics/issues",
@@ -34,7 +34,7 @@
   },
 
   "dependencies": {
-    "cylon": "~1.0.0",
+    "cylon": "~1.1.0",
     "restler": ">= 3.2.2"
   }
 }

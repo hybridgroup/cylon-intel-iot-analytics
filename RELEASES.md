@@ -1,5 +1,7 @@
 ## Release History
 
+0.3.0 - Use Cylon 1.1.0
+
 0.2.0 - Compatibility with Cylon 1.0.0
 
 0.1.1 - Fix lint and test errors.
